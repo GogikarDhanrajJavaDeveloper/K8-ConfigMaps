@@ -1,0 +1,20 @@
+apiVersion:apps/v1
+kind:ReplicaSet
+metadata:
+  name:my-replica-set
+spec:
+  replicas:3
+  selector:
+    matchLabels:
+      app:frontend
+  template:
+    metadata:
+      name:replica-pod
+      labels:
+        app:frontend
+    spec:
+      containers:
+      -name:replica-container
+      image:registry-example.com:5000/docker.io/mhausenblas/simpleservice:0.5
+      ports:
+      -containerPort:9876

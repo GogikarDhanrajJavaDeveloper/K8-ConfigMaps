@@ -1,0 +1,19 @@
+apiVersion:apps/v1
+kind:DaemonSet
+metadata:
+  name:myapp-ds
+  spec:
+  selector:
+    metaLabels:
+      app:myapp-agent
+  template:
+    metadata:
+      name:myapp-pod
+      labels:
+        app:myapp-agent
+        agent:log-collect
+    spec:
+      containers:
+      -name:myapp-log-cont
+      image:docker.io/nginx:alpine
+  

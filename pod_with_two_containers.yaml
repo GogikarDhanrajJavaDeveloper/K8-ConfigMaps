@@ -1,0 +1,20 @@
+apiVersion:v1
+kind:Pod
+metadata:
+  name:twocontainers-pod
+  labels:
+    owner:Jill
+    tier:frontend
+    app:webapp
+  spec:
+  containers:
+  -name:simpleservice
+  image:registry.example.com:5000/docker.io/mhausenblas/simpleservice:0.5.0
+  ports:
+  -containerPort:9876
+  -name:shell
+  image:registry.example.com:5000/centos:7
+  command:
+  -"bin/bash"
+  -"-c"
+  -"sleep 10000"
